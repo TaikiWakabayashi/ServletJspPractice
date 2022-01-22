@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,8 +26,9 @@ public class FruitServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		Fruit fruit = new Fruit("いちご",700);
 		
-		//リクエストスコープに保存
-		request.setAttribute("fruit",fruit);
+		//アプリケーションスコープに保存
+		ServletContext sc = this.getServletContext();
+		sc.setAttribute("fruit",fruit);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Fruit.jsp");
 		
